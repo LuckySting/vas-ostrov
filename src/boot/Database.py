@@ -34,7 +34,7 @@ class IDatabase(abc.ABC):
         """
 
     @abc.abstractmethod
-    async def fetchOne(self, query: str) -> Tuple[str, str]:
+    async def fetchOne(self, query: str) -> Tuple[Tuple[str, str]]:
         """
         Get one row from database async, if row not fetched raises RowNotFound
         :param query: SQL query
@@ -44,7 +44,7 @@ class IDatabase(abc.ABC):
         """
 
     @abc.abstractmethod
-    async def fetchMany(self, query: str) -> List[Tuple[str, str]]:
+    async def fetchMany(self, query: str) -> List[Tuple[Tuple[str, str]]]:
         """
         Get many row from database async, if no rows found return empty list
         :param query: SQL query
