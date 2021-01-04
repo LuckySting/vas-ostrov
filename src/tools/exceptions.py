@@ -14,3 +14,7 @@ class WrongInsertQuery(Error):
 
 class WrongTableNameQuery(Error):
     """Raised when SQL query contains operations with table, which does not exists"""
+
+
+class NotEnoughData(Error):
+    """Raised when deserializing db row was not successful due to some fields has no values"""
