@@ -34,33 +34,33 @@ class IDatabase(abc.ABC):
         """
 
     @abc.abstractmethod
-    async def fetchOne(self, query: str) -> Tuple[Tuple[str, str]]:
+    async def fetchOne(self, query: str) -> Tuple[Tuple[str, Union[str, bool, datetime, int]]]:
         """
         Get one row from database async, if row not fetched raises RowNotFound
         :param query: SQL query
         :type query: str
         :return: Fetched row
-        :rtype: Tuple[str, str]
+        :rtype: Tuple[Tuple[str, Union[str, bool, datetime, int]]]
         """
 
     @abc.abstractmethod
-    async def fetchMany(self, query: str) -> List[Tuple[Tuple[str, str]]]:
+    async def fetchMany(self, query: str) -> List[Tuple[Tuple[str, Union[str, bool, datetime, int]]]]:
         """
         Get many row from database async, if no rows found return empty list
         :param query: SQL query
         :type query: str
         :return: Fetched rows
-        :rtype: List[Tuple[str, str]]
+        :rtype: List[Tuple[Tuple[str, Union[str, bool, datetime, int]]]]
         """
 
     @abc.abstractmethod
-    async def insert(self, query: str, *args: Union[str, int, datetime]) -> None:
+    async def insert(self, query: str, *args: Union[str, int, bool, datetime]) -> None:
         """
         Insert row to database
         :param query: insert query, if query contains other operations, raises WrongInsertQuery
         :type query:
         :param args: arguments for insert query
-        :type args: Union[str, int, datetime]
+        :type args: Union[str, int, bool, datetime]
         :return: None
         :rtype: None
         """
